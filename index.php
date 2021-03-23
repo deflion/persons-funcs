@@ -14,8 +14,10 @@ include "main.php";
 
 
 // echo getShortName("Иванов Иван Иванович");
-echo getGenderFromName($persons_array[0]["fullname"]);
-echo getGenderFromName($persons_array[1]["fullname"]);
+// echo getGenderDescription($persons_array);
+
+
+getGenderDescription($persons_array);
 
 ?>
     

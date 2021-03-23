@@ -63,7 +63,44 @@ function getGenderFromName($fullName){
     } elseif (($gender <=> 0) === -1){
         return "Female";
     } else {
-        return "undefined";
+        return "Undefined";
     }
 
 }
+
+function getGenderDescription($array){
+
+    $male = 0;
+    $female = 0;
+    $und = 0;
+
+    foreach($array as $value){
+
+        if (getGenderFromName($value["fullname"]) == "Male"){
+            $male +=1;
+        };
+
+        if (getGenderFromName($value["fullname"]) == "Female"){
+            $female +=1;
+        }
+        
+        if (getGenderFromName($value["fullname"]) == "Undefined"){
+            $und +=1;
+        }
+        
+    }
+
+    $sum = $male + $female + $und;
+    $maleCheck =  round($male / $sum * 100,2);
+    $femaleCheck = round($female / $sum * 100, 2);
+    $undCheck = round($und / $sum  * 100,2);
+
+    echo <<<HEREDOCLETTER
+    Гендерный состав аудитории:<br>
+    ---------------------------<br>
+    Мужчины - $maleCheck%<br>
+    Женщины - $femaleCheck%<br>
+    Не удалось определить - $undCheck%<br>
+    HEREDOCLETTER;
+
+};
