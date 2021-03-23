@@ -1,26 +1,25 @@
-<? include "persons.php"; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-<?    
+<?
 
-    function getPartsFromFullname($fullName){
-        $exploted = explode(" ",$fullName);
-        $seporated = [
-            'surmane' => $exploted[0],
-            'name' => $exploted[1],
-            'patronymic' => $exploted[2],
-        ] ;
-
-        return $seporated;
-
-    };
-
-    function getFullnameFromParts($surname, $name, $patronomyc){
-        $fullName = [$surname, $name, $patronomyc];
-        return implode(' ', $fullName);
-    };
+include "main.php";
 
 
-    print_r(getPartsFromFullname("Иванов Иван Иванович"));
-    echo( getFullnameFromParts("Иванов", "Иван", "Иванович"));
+echo getShortName("Иванов Иван Иванович");
 
 ?>
+    
+</body>
+</html>
+
+
+
+
