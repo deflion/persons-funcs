@@ -10,12 +10,12 @@ function getPartsFromFullname($fullName){
 
     return $seporated;
 
-};
+}
 
 function getFullnameFromParts($surname, $name, $patronomyc){
     $fullName = [$surname, $name, $patronomyc];
     return implode(' ', $fullName);
-};
+}
 
 function getShortName($fullName){
     $seporated = getPartsFromFullname($fullName);
@@ -95,12 +95,40 @@ function getGenderDescription($array){
     $femaleCheck = round($female / $sum * 100, 2);
     $undCheck = round($und / $sum  * 100,2);
 
-    echo <<<HEREDOCLETTER
+    echo <<<HEREDOC
     Гендерный состав аудитории:<br>
     ---------------------------<br>
     Мужчины - $maleCheck%<br>
     Женщины - $femaleCheck%<br>
     Не удалось определить - $undCheck%<br>
-    HEREDOCLETTER;
+    HEREDOC;
 
-};
+}
+
+function getPerfectPartner($surname, $name, $patronomyc, $array){
+
+    $fullName = getFullnameFromParts($surname, $name, $patronomyc);
+    $mainGender = getGenderFromName($fullName);   
+
+    $randPerson = $array[rand(0,count($array)-1)]["fullname"];
+    $randGender = getGenderFromName($randPerson);
+    
+
+    while ($mainGender == $randGender || $randGender === "Undefined"){
+        $randPerson = $array[rand(0,count($array)-1)]["fullname"];
+        $randGender = getGenderFromName($randPerson);
+    }
+
+
+    $shMainPerson = getShortName($fullName);
+    $shRandPerson = getShortName($randPerson);
+    $percent = rand(50,100)+rand(0,99)/100;
+
+
+    echo <<<HEREDOC
+    $shMainPerson + $shRandPerson =<br>
+    ♡ Идеально на $percent% ♡
+    HEREDOC;
+
+}
+
