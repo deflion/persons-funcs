@@ -70,30 +70,23 @@ function getGenderFromName($fullName){
 
 function getGenderDescription($array){
 
-    $male = 0;
-    $female = 0;
-    $und = 0;
+    $male = array_filter($array, function($array) {
+        return (getGenderFromName($array['fullname']) == "Male");
+    });
 
-    foreach($array as $value){
+    $female = array_filter($array, function($array) {
+        return (getGenderFromName($array['fullname']) == "Female");
+    });
 
-        if (getGenderFromName($value["fullname"]) == "Male"){
-            $male +=1;
-        };
+    $und = array_filter($array, function($array) {
+        return (getGenderFromName($array['fullname']) == "Undefined");
+    });
 
-        if (getGenderFromName($value["fullname"]) == "Female"){
-            $female +=1;
-        }
-        
-        if (getGenderFromName($value["fullname"]) == "Undefined"){
-            $und +=1;
-        }
-        
-    }
 
-    $sum = $male + $female + $und;
-    $maleCheck =  round($male / $sum * 100,2);
-    $femaleCheck = round($female / $sum * 100, 2);
-    $undCheck = round($und / $sum  * 100,2);
+    $sum = count($male) + count($female) + count($und);
+    $maleCheck =  round(count($male) / $sum * 100,2);
+    $femaleCheck = round(count($female) / $sum * 100, 2);
+    $undCheck = round(count($und) / $sum  * 100,2);
 
     echo <<<HEREDOC
     Гендерный состав аудитории:<br>
