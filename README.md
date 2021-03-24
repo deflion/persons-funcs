@@ -1,5 +1,9 @@
 # Практическая работа №16
 
+<div style="text-align:center">
+    <img src="https://lms.skillfactory.ru/assets/courseware/v1/6d6454dac90b786880de0046d7eefa8f/asset-v1:SkillFactory+PHP-2.0+2020+type@asset+block/php_17_practice.svg" style="width:500px">
+</div> 
+
 ## Разбиение и объединение ФИО
 
 `getFullnameFromParts` принимает как аргумент три строки — фамилию, имя и отчество. Возвращает как результат их же, но склеенные через пробел.
@@ -50,7 +54,7 @@
 
 ### 0 баллов
 
-- [ ] ~~~не решена ни одна задача;~~~
+- [ ] не решена ни одна задача;
 
 ### 5 баллов
 
